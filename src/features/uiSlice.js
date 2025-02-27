@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  openModal: null, // Holds the component to be displayed in the modal
+  openModal: null, 
 };
 
 const uiSlice = createSlice({

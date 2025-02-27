@@ -5,6 +5,7 @@ import RichTextEditor from "./Components/RichTextEditor";
 import UserForm from "./Components/UserForm";
 import Header from "./Components/Header";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Dashboard from "./Components/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,12 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route
           path="/dashboard"
+          element={
+            <Dashboard/>
+          }
+        />
+        <Route
+          path="/curve"
           element={
             <ProtectedRoute>
               <BezierCurve />

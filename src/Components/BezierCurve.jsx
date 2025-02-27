@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring";
 const BezierCurve = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   });
 
   const [count, setCount] = useState(5);
@@ -13,23 +13,20 @@ const BezierCurve = () => {
 
   const start = { x: 0, y: 100 };
 
-  // Function to get dynamic background color based on count
   const getBackgroundColor = () => {
     const hue = (count * 5) % 360;
     return `hsl(${hue}, 80%, 70%)`;
   };
 
-  // React Spring for background color transition
   const bgAnimation = useSpring({
     backgroundColor: getBackgroundColor(),
-    config: { duration: 500 } // Smooth transition duration
+    config: { duration: 500 },
   });
 
-  // React Spring for SVG size transition
   const svgAnimation = useSpring({
     width: (windowSize.width * count) / 100,
     height: (windowSize.height * count) / 100,
-    config: { tension: 200, friction: 20 }
+    config: { tension: 200, friction: 20 },
   });
 
   useEffect(() => {
@@ -42,27 +39,24 @@ const BezierCurve = () => {
 
   return (
     <animated.div
-      className="fixed bottom-0 left-0 w-screen h-screen flex flex-col items-center justify-center p-4 transition-all"
+      className="flex flex-col items-center justify-center p-4 transition-all w-full h-[calc(100vh-4rem)]" // Prevent overlap
       style={bgAnimation}
     >
-      {/* Count Adjuster */}
       <div className="flex items-center gap-4 bg-white p-2 rounded shadow">
         <button
-          className="px-3 py-1 bg-gray-200 rounded"
+          className="px-3 py-1 bg-gray-200 rounded cursor-pointer"
           onClick={() => setCount((prev) => Math.max(1, prev - 1))}
         >
           -
         </button>
         <p className="text-lg font-semibold">{count}</p>
         <button
-          className="px-3 py-1 bg-gray-200 rounded"
+          className="px-3 py-1 bg-gray-200 rounded cursor-pointer"
           onClick={() => setCount((prev) => Math.min(80, prev + 1))}
         >
           +
         </button>
       </div>
-
-      {/* SVG with Animated Size */}
       <animated.svg
         style={svgAnimation}
         className="mt-4"

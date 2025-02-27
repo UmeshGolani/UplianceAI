@@ -2,7 +2,6 @@ import { animated, useSpring } from "react-spring";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {
-  // Animate cards
   const cardAnimation = useSpring({
     from: { opacity: 0, transform: "scale(0.8)" },
     to: { opacity: 1, transform: "scale(1)" },
@@ -16,7 +15,7 @@ export default function Dashboard() {
         <animated.div style={cardAnimation} className="p-6 bg-white shadow-lg rounded-lg">
           <h2 className="text-xl font-semibold mb-2">Bezier Curve Counter</h2>
           <p>Animated counter using React Spring</p>
-          <Link to="/dashboard" className="text-blue-500">Go to Counter</Link>
+          <Link to="/curve" className="text-blue-500">Go to Counter</Link>
         </animated.div>
 
         <animated.div style={cardAnimation} className="p-6 bg-white shadow-lg rounded-lg">
